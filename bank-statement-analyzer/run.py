@@ -1,6 +1,8 @@
 from parsers import parse_file
 
 import csv
+import hashlib
+import pdb
 import numpy as np
 import pandas as pd
 
@@ -33,8 +35,13 @@ def aggregate_data(csv_directory):
         dfs.append(parse_file(full_filepath))
 
     complete_data = pd.concat(dfs, ignore_index=True)
-    complete_data["Category"] = np.nan
-    complete_data = complete_data[['Date', 'Description', 'Category', 'Card Used', 'Credit', 'Debit']]
+    complete_data["category"] = np.nan
+    
+    complete_data["transaction_id"] = [hashlib.md5(str(x).encode('utf-8')).hexdigest() for x in complete_data.T.to_dict().values()]
+
+    complete_data.columns = complete_data.columns.str.lower()
+    complete_data = complete_data[['transaction_id', 'date', 'description', 'category', 'card_used', 'credit', 'debit']]
+    
     return complete_data
 
 def append_data_to_gsheet(data, sheet_key, worksheet_name):
