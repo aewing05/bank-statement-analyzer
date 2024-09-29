@@ -1,4 +1,3 @@
-credentials.json
 bank-statement-analyzer-venv/
 bank-statement-analyzer/personal_finance.db
 __pycache__/
