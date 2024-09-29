@@ -1,5 +1,5 @@
+from dbconn import update_db
 from parsers import parse_file
-
 import csv
 import hashlib
 import pdb
@@ -20,6 +20,7 @@ WORKSHEET_NAME = 'raw_data'
 def main():
     aggregated_data = aggregate_data(CSV_DIRECTORY)
     append_data_to_gsheet(aggregated_data, SHEET_KEY, WORKSHEET_NAME)
+    update_db(aggregated_data)
     return
 
 
