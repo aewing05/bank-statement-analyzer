@@ -1,5 +1,7 @@
 # bank-statement-analyzer
 
+[Diagram](https://excalidraw.com/#json=mohtK7BbKTqxEm1BVncKL,aPW2IDISANXsLRZXatsRGQ)
+
 ## Setup
 1. Clone Repo
 2. In repo directory, create a virtual environment, e.g. `python3 -m venv bank-statement-analyzer-venv`
